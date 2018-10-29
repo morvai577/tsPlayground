@@ -29,3 +29,47 @@ Some options require a parameter too like the --target option, it requires you t
 Two other options that are worth mentioning are the --module and the --outfile options. We will be using those two options later on in this course.
 
 Detailed list on all Compiler Options can be found in the language handbook (http://www.typescriptlang.org/docs/handbook/compiler-options.html)
+
+## Type Script compiler
+
+### The advantages of using types
+As the name implies, TypeScript is all about types. This is considered the main advantage in TypeScript. If you are a .Net developer or a developer who writes code in other languages like C#, C++, Java, ..etc, you may know the benefits of types and you may find it uncomfortable to program in a world where types do not exist as in JavaScript.
+
+The main advantage of types is type safety which means the compiler and the development supporting tools can catch potential problems in your application during development rather than running into exceptions at the runtime.
+
+TypeScript is a strongly typed superset of JavaScript. It is a compiled rather than an interpreted language; which means errors can be caught and fixed before the code runs. This is a huge advantage not found in JavaScript even to catch type mismatch issues which many times JavaScript fails to catch until the code is executed.
+
+For example:
+
+```
+// in JavaScript
+function add(x, y){ return x + y; }
+```
+
+In the above function declaration, we are not using types for the function parameters, the reader can't tell if this is an arithmetic function that is supposed to add two numbers and return the summation, or if it is a function that adds two words to each other and return a concatenation of two strings. in this case both of the following calls may work in JavaScript:
+
+```
+add (1, 4);      		// result: 5 
+add("Birth", "day");    // result: 'Birthday' 
+add("1", "day");    	// result: '1day'
+```
+
+However, think of cases when things go wrong and a string value is passed to the function while the application is supposed to add numbers, although this may work in the application, it may result in different behavior than what the application is supposed to do in the first place and eventually runtime exceptions happen because the rest of the application is assuming numeric values as result. Similarly, calling the function add(1, "day") is also acceptable in JavaScript but will result in unexpected behavior in runtime.
+
+```
+// in TypeScript
+function add(x: number, y: number) { return x + y; }
+```
+
+In the above function declaration, the developer is giving consent that the add function is an arithmetic function that is supposed to take two numbers and return the summation result. in that case passing anything else other than a number value will result in an error. For example calling the function add("sun", "shine") will result in a compilation error and the code cannot be executed until the error is fixed.
+
+```
+// in TypeScript
+function add(x: string, y: string) { return x + y; }
+```
+
+Similarly, in the above function declaration, the developer is giving consent that the add function is a function that operates on text and is supposed to take two words and return a new word that is the combination of the two input words. In that case passing anything else other than a string value will result in an error. For example calling the function add(1, 3) will result in a compilation error and the code can not be executed until the error is fixed.
+
+By using types here you can save a lot of time debugging and trying to trace down and fix a problem when using no types as in JavaScript.
+
+Another advantage when using types is the semantics you give to your code which allows other developers who might be working on your code to understand your intentions and understand how the code is supposed to work.
