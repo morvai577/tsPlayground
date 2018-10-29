@@ -30,9 +30,7 @@ Two other options that are worth mentioning are the --module and the --outfile o
 
 Detailed list on all Compiler Options can be found in the language handbook (http://www.typescriptlang.org/docs/handbook/compiler-options.html)
 
-## Type Script compiler
-
-### The advantages of using types
+## The advantages of using types
 As the name implies, TypeScript is all about types. This is considered the main advantage in TypeScript. If you are a .Net developer or a developer who writes code in other languages like C#, C++, Java, ..etc, you may know the benefits of types and you may find it uncomfortable to program in a world where types do not exist as in JavaScript.
 
 The main advantage of types is type safety which means the compiler and the development supporting tools can **catch** potential problems in your application during development rather than running into exceptions at the runtime.
