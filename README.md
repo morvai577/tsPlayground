@@ -71,3 +71,45 @@ Similarly, in the above function declaration, the developer is giving consent th
 By using types here you can save a lot of time debugging and trying to trace down and fix a problem when using no types as in JavaScript.
 
 Another advantage when using types is the semantics you give to your code which allows other developers who might be working on your code to understand your intentions and understand how the code is supposed to work.
+
+## How to declare variable in TypeScript
+
+### Variable Declarations in TypeScript
+let and const are two relatively new types of variable declarations in JavaScript which TypeScript supports.
+
+using let keyword
+
+**syntax**
+```
+let variableName: variableType = value;
+// or  
+let variableName: variableType;
+```
+
+**example**
+```
+let x: number = 5;
+// or  
+let x: number;
+```
+**let** is a keyword which tells the compiler here comes a new declaration of a variable. let is similar to var, which has been the keyword to declare variables in JavaScript. However, let was introduced to allow users to avoid some of the common issues that users run into when using var in JavaScript. It is then highly recommended to use let.
+
+**variableName** is any name that you would like to give to your variable. any name can be used as a variable name except the language reserved words like names of types, the word if, while, ...etc. As a best practice, it is recommended to use meaningful names for your variables.
+
+**the colon :** is a separator between the variable name and the variable type. The colon tells the compiler that the following keyword is the type of the variable whose name was just given before the colon.
+
+**variableType** this is the type of the variable. it can be any of the types keywords in TypeScript like number, string, boolean, ...etc. Types will be covered in more details in the upcoming lessons.
+
+**the equal sign =** is the assignment symbol. Use the assignment symbol if you are going to assign a value for the variable at the time of declaration. otherwose, this can be leftout until it is time to assign a value for the variable.
+
+**value** this is the value that you want to assign to the variable. It has to fit in the declared variable type or else the TypeScript compiler will give an error.
+
+**Notice that:**
+
+semicolons **;** are used in TypeScript at the end of a complete code sentence. Semicolons are optional in both JavaScript and TypeScript. However, using semicolon is recommended for many reasons of which code readability is the most important. there are rules regulating when a semicolon is used and when not. Semicolons are not used with loop definitions or if statements definitions for example. As we get more hands on coding in the course you will learn when to use a semicolon and when not and the compiler will be a good guide too.
+
+**using const keyword**
+const declarations are another way of declaring variables. They are like let declarations but, as their name implies, their value cannot be changed once they are bound which means you can't reassign them.
+
+**example**
+const pi = 3.14;
