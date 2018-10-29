@@ -35,7 +35,7 @@ Detailed list on all Compiler Options can be found in the language handbook (htt
 ### The advantages of using types
 As the name implies, TypeScript is all about types. This is considered the main advantage in TypeScript. If you are a .Net developer or a developer who writes code in other languages like C#, C++, Java, ..etc, you may know the benefits of types and you may find it uncomfortable to program in a world where types do not exist as in JavaScript.
 
-The main advantage of types is type safety which means the compiler and the development supporting tools can catch potential problems in your application during development rather than running into exceptions at the runtime.
+The main advantage of types is type safety which means the compiler and the development supporting tools can **catch** potential problems in your application during development rather than running into exceptions at the runtime.
 
 TypeScript is a strongly typed superset of JavaScript. It is a compiled rather than an interpreted language; which means errors can be caught and fixed before the code runs. This is a huge advantage not found in JavaScript even to catch type mismatch issues which many times JavaScript fails to catch until the code is executed.
 
