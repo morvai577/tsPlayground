@@ -113,3 +113,211 @@ const declarations are another way of declaring variables. They are like let dec
 
 **example**
 const pi = 3.14;
+
+**Types in TypeScript vs. JavaScript**
+
+***Types in TypeScript vs. JavaScript***
+JavaScript uses **dynamic types** while TypeScript uses static types which is also referred to as strongly typed types.
+
+JavaScript uses types like numbers, string, dates, ..etc. However, when you use variables in JavaScript you are not explicit about the type of the variable, in fact you do not explicitly mention the type of the variable using a type keyword. However, the type of the variable is just inferred from the value you assign to the variable. This also means there is no enforcement on the variable to stay in that type or to hold values that are compatible with that type. This is referred to as dynamic types. In JavaScript, the type of the variable is given from the value the variable holds. If the value changes, the type of the variable also changes to fit the new value. It is therefore considered a dynamic type.
+
+TypeScript is different - variables are **explicit** about their types and the value assigned to a variable has to comply with the variable type or an error is given during compilation. Once defined with a type, a variable cannot change its type in TypeScript, it is therefore considered strongly typed. For example:
+
+```
+let x: number;  // x is explicitly declared of type number
+x = 3;          // correct assignment 
+x = "hi";       // incorrect assignment
+```
+
+In TypeScript, if a variable is not explicitly assigned a type when it is defined, then the type is inferred from the first assignment or the initialization of the variable and then it is then considered a strongly typed variable with the inferred type. For example:
+
+```
+let y = 10;   // y is now a strongly typed as number due to type inference
+y = "hello"; // incorrect because y should hold only numbers
+```
+
+In TypeScript, this is an error, because the first assignment of the number 3 to x makes TypeScript compiler considered x a strongly typed variable with type number which can not accept a string value as in "hi".
+
+Note that in JavaScript, this is ok because types are dynamic and can change based on the value the variable holds in each assignment.
+
+## Classification of types in TypeScript
+
+### Classification of types in TypeScript
+types are classified into two main classes in TypeScript
+
+#### 1. Basic or Primitive Types
+  1. boolean
+  2. number
+  3. string
+  4. array
+  5. tuple
+  6. enum
+  7. null
+  8. undefined
+  9. any
+  10. void: exists purely to indicate the absence of a value, such as in a function with no return value.
+
+#### 2. Complex or Non-Primitive Types
+  1. class
+  2. interface
+
+## Basic types
+
+### Introduction
+It is a fundamental part when we program applications to be able to work with some of the simplest units of data like: numbers, strings, boolean values, and the like. TypeScript supports much the same types as you would expect in JavaScript, with a convenient enumeration type thrown in to help things along.
+
+**Here are the basic types in TypeScript**
+
+### Boolean
+The most basic datatype is the simple true/false value, which JavaScript and TypeScript call a boolean value.
+
+```let isDone: boolean = false;```
+
+### Number
+As in JavaScript, all numbers in TypeScript are floating point values. These floating point numbers get the type number. In addition to hexadecimal and decimal literals, TypeScript also supports binary and octal literals introduced in ECMAScript 2015.
+
+```
+let decimal: number = 6;
+let hex: number = 0xf00d;
+let binary: number = 0b1010;
+let octal: number = 0o744;
+```
+
+### String
+Another fundamental part of creating programs in JavaScript for webpages and servers alike is working with textual data. As in many programming languages, we use the type string to refer to these textual datatypes. As in JavaScript, TypeScript uses either double quotes (") or single quotes (') to surround string data.
+
+```
+let color: string = "blue";
+color = 'red';
+```
+
+You can also use template strings, which can span multiple lines and have embedded expressions. These strings are surrounded by the backtick/backquote (`) character, and embedded expressions are of the form ${ expr }.
+
+```
+let fullName: string = `Bob Bobbington`;
+let age: number = 37;
+let sentence: string = `Hello, my name is ${ fullName }. 
+    I'll be ${ age + 1 } years old next month.`;
+```
+
+This is equivalent to declaring sentence like so:
+
+```
+let sentence: string = "Hello, my name is " + fullName + ".\n\n" +
+    "I'll be " + (age + 1) + " years old next month.";
+```
+
+TypeScript allows you to use an array of string manipulation functions with your string data types like: slicing your string, spliting, searching for certain characters, ...etc.
+
+### Array
+TypeScript, like JavaScript, allows you to work with arrays of values. Array types can be written in one of two ways. In the first, you use the type of the elements followed by [] to denote an array of that element type:
+
+```
+let list: number[] = [1, 2, 3];
+```
+
+The second way uses a generic array type, ```Array<elemType>```:
+
+```
+let list: Array<number> = [1, 2, 3];
+```
+
+### Tuple
+Tuple types allow you to express an array where the type of a fixed number of elements is known, but need not be the same. For example, you may want to represent a value as a pair of a string and a number:
+
+```
+// Declare a tuple type
+let x: [string, number];
+// Initialize it
+x = ["hello", 10]; // OK
+// Initialize it incorrectly
+x = [10, "hello"]; // Error
+```
+
+When accessing an element with a known index, the correct type is retrieved:
+
+```
+console.log(x[0].substr(1)); // OK
+console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
+```
+
+### Enum
+A helpful addition to the standard set of datatypes from JavaScript is the enum. As in languages like C#, an enum is a way of giving more friendly names to sets of numeric values.
+
+```
+enum Color {Red, Green, Blue}
+let c: Color = Color.Green;
+```
+
+By default, enums begin numbering their members starting at 0. You can change this by manually setting the value of one of its members. For example, we can start the previous example at 1 instead of 0:
+
+```
+enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;
+```
+
+Or, even manually set all the values in the enum:
+
+```
+enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;
+```
+
+A handy feature of enums is that you can also go from a numeric value to the name of that value in the enum. For example, if we had the value 2 but weren't sure what that mapped to in the Color enum above, we could look up the corresponding name:
+
+```
+enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2];
+
+
+alert(colorName);
+```
+
+### Any
+We may need to describe the type of variables that we do not know when we are writing an application. These values may come from dynamic content, e.g. from the user or a 3rd party library. In these cases, we want to skip type-checking and let the values pass through compile-time checks. To do so, we label these with the any type:
+
+```
+let notSure: any = 4;
+notSure = "maybe a string instead";
+notSure = false; // okay, definitely a boolean
+```
+
+The ```any``` type is a powerful way to work with existing JavaScript, allowing you to gradually opt-in and opt-out of type-checking during compilation.
+
+The any type is also handy if you know some part of the type, but perhaps not all of it. For example, you may have an array but the array has a mix of different types:
+
+```
+let list: any[] = [1, true, "free"];
+
+list[1] = 100;
+```
+
+### Void
+void is a little like the opposite of any. void means the absence of having any type at all. void type is mainly used as the return type of functions that do not return a value:
+
+```
+function warnUser(): void {
+    alert("This is my warning message");
+}
+```
+
+Declaring variables of type void is not useful because you can only assign ```undefined``` or ```null``` to them:
+
+```let unusable: void = undefined;```
+
+### Null and Undefined
+In TypeScript, both ```undefined``` and ```null``` actually have their own types named ```undefined``` and ```null``` respectively. Much like ```void```, they're not extremely useful on their own:
+
+```
+// Not much else we can assign to these variables!
+let u: undefined = undefined;
+let n: null = null;
+```
+
+By default ```null``` and ```undefined``` are subtypes of all other types. That means you can assign ```null``` and ```undefined``` to something like a ```number```.
+
+
+
+
+
+
