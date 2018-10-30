@@ -316,6 +316,20 @@ let n: null = null;
 
 By default ```null``` and ```undefined``` are subtypes of all other types. That means you can assign ```null``` and ```undefined``` to something like a ```number```.
 
+## Type any
+
+### Avoid using any
+TypeScript adds optional static types to JavaScript. Types are used to place static constraints on program entities such as functions, variables, and properties so that compilers and development tools can offer better verification and assistance during software development. TypeScript’s static compile-time type system closely models the dynamic run-time type system of JavaScript, allowing programmers to accurately express the type relationships that are expected to exist when their programs run and have those assumptions pre-validated by the TypeScript compiler. TypeScript’s type analysis occurs entirely at compile-time and adds no run-time overhead to program execution. Since types are optional in TypeScript, the language allows you to use dynamic types in a sense similar to the JavaScript world. The key word for that is to use *any* as the type of your variable when you declare it. This tells the TypeScript compiler to ignore this variable type and treat it as a dynamic type just like JavaScript. It tells the compiler not to do any checks on the values assigned to that variable and hence you can assign anything to that variable at any time with any type. any is useful in some situations like when there is no defined type for the value you want to assign to your variable as when you are using older JavaScript libraries that have no object model defined for TypeScript yet (more about this is covered in the definitely typed project in module 4). In those situations, any is your saver. However, it is highly recommended to avoid using any as much as possible and only use it in situtations when no other type works.
+
+**example:** avoid using any
+
+```
+let x; === let x: any; //back to JavaScript world
+x = 3;
+x = "hi";
+```
+
+
 
 
 
