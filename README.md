@@ -329,6 +329,47 @@ x = 3;
 x = "hi";
 ```
 
+## Type Assertions
+Sometimes you'll end up in a situation where you'll know more about a value than TypeScript does. Usually this will happen when you know the type of some entity could be more specific than its current type.
+
+**Type assertions** are a way to tell the compiler "trust me, I know what I'm doing." A type assertion is like a type cast in other languages, but performs no special checking or restructuring of data. It has no runtime impact, and is used purely by the compiler. TypeScript assumes that you, the programmer, have performed any special checks that you need.
+
+Type assertions have two forms. One is the "angle-bracket" syntax < >:
+
+```let someValue: any = "this is a string";```
+
+```let strLength: number = (<string>someValue).length;```
+
+And the other is the as-syntax:
+
+```
+let someValue: any = "this is a string";
+
+let strLength: number = (someValue as string).length;
+```
+
+The two samples are equivalent. Using one over the other is mostly a choice of preference; however, when using TypeScript with JSX, **only** as-style assertions are allowed.
+
+## Interfaces
+One of TypeScript's core principles is that type-checking focuses on the **shape** that values have. This is sometimes called **"duck typing"** or **"structural subtyping"**. In TypeScript, interfaces fill the role of naming these types, and are a powerful way of defining **contracts** within your code as well as contracts with code outside of your project.
+
+Note: If you come from another language, such as C# or Java, you may be used to the fact that interfaces are explicitly implemented. Although explicitly implementing an interface is an option in TypeScript (see Class Types ), it is not a requirement. If an instance of an object satisfies the shape of an interface, then the object can be assigned to any variable defined as that interface type. Equally, that object can also be passed as an argument to a function that requires the interface type as a parameter.
+
+### Example Interface
+```
+function printLabel(labelledObj: { label: string }) {
+    console.log(labelledObj.label);
+}
+
+let myObj = {size: 10, label: "Size 10 Object"};
+printLabel(myObj);
+```
+
+The type-checker checks the call to ```printLabel```. The ```printLabel``` function has a single parameter that requires that the object passed in has a property called ```label``` of type string. Notice that our object actually has more properties than this, but the compiler only checks that at least the ones required are present and match the types required. There are some cases where TypeScript isn't as lenient, which we'll cover in a bit.
+
+
+
+
 
 
 
